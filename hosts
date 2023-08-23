@@ -1,7 +1,0 @@
-so4-fortigate:
-            hosts:
-                10.233.143.12
-            vars:
-                fortigate_username: "jiali60"
-                fortigate_password: "password"
-                

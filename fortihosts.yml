@@ -1,0 +1,21 @@
+### FortiGate Host###
+
+fortigate
+
+ansible_host=10.233.143.12 ansible_user="jiali60" ansible_password="Nibuhuidong2@"
+
+### FortiGate OS Modules ###
+
+fortigate:vars
+
+ansible_network_os=fortinet.fortios.fortios
+
+### Specify API connection with HTTP (default SSH)###
+
+all:vars
+
+ansible_connection=httpapi
+
+ansible_httpapi_validate_certs=no
+
+ansible_httpapi_use_ssl=yes

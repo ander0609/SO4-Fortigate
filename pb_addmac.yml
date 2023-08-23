@@ -1,0 +1,18 @@
+---
+
+- name: Create mac addr
+  hosts: fortigates
+  vars_files:
+    - vars/input.yml
+
+  tasks:
+  - name: new mac addr
+    fortinet.fortios.fortios_firewall_address:
+      enable_log: "yes"
+      state: "present"
+      firewall_address:
+        name: '{{ mac_address_name }}'
+        type: "mac"
+        start_mac: '{{ mac_address_value }}'
+        end_mac: '{{ mac_address_value }}'
+        comment: '{{ mac_address_comments }}'

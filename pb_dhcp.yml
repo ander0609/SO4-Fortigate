@@ -1,0 +1,41 @@
+---
+
+- name: Create mac addr
+  hosts: fortigates
+  vars_files:
+    - vars/input.yml
+    
+  tasks: 
+  - name: dhcp configuration
+    fortios_system_dhcp_server: 
+          vdom: "root"
+          state: "present"
+          system_dhcp_server:
+              auto_configuration: "disable"
+              auto_managed_status: "disable"
+              conflicted_ip_timeout: "1800"
+              default_gateway: "192.168.96.1"
+              dns_server1: "223.5.5.5"
+              dns_server2: "114.114.114.114"
+              dns_service: "default"
+              id: "1"
+              interface: "SO4 wifi-inside"
+              ip_mode: "range"
+              ip_range:
+              - start_ip: "192.168.96.22"
+                id: "1"
+                end_ip: "192.168.97.254"
+              lease_time: "3600"
+              netmask: "255.255.254.0"
+              
+              reserved_address: 
+                  -
+                      id: "1"
+                      action: "assign"           
+                      description: '{{ mac_address_comments }}'                
+                      mac: '{{ mac_address_value }}'               
+                      type: "mac"
+              
+             
+              
+
